@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Paradigm Pet Professionals</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <nav>
+            <div class="img-link">
+                <a href="index.html">
+                    <img src="media/logo.png" alt="Home">
+                </a>
+            </div>
+            <div class="link-items">
+                <div class="dropdown">
+                    <button>Animals</button>
+                    <div class="dropdown-content">
+                        <a href="cats.html">Cats</a>
+                        <a href="dogs.html">Dogs</a>
+                        <a href="small-animals.html">Small Animals</a>
+                    </div>
+                </div>
+                <a href="faqs.html">FAQ's</a>
+                <a class="visited-link" href="contact.html">Contact Us</a>
+            </div>
+            <div class="search-bar">
+                <button type="submit">Search</button>
+                <input type="text" placeholder="Search this page...">
+            </div>
+        </nav>
+        <main>
+            <header class="message-form">
+                <div class="below-article">
+                    <form onsubmit="showSuccess()">
+                        <div id="contact-label">
+                            <h2>Contact Us</h2>
+                            <p>Are you interested in a consultation with one of our "Pexperts"? Fill out the form below to get in touch with us.</p>
+                        </div>
+                        <div id="text-input">
+                            <label for="first-name">First Name:</label>
+                            <input type="text" id="first-name" placeholder="First name (Ex. John)" pattern="[A-Za-z]+" title="No numbers or symbols allowed" required>
+                        </div>
+                        <div id="text-input">
+                            <label for="last-name">Last Name:</label>
+                            <input type="text" id="last-name" placeholder="Last name (Ex. Doe)" pattern="[A-Za-z]+" title="No numbers or symbols allowed" required>
+                        </div>
+                        <div id="text-input">
+                            <label for="email">Email:</label>
+                            <p id="email-match"></p>
+                            <input type="email" id="email" placeholder="Email (Ex. johndoe@domain.com)" required>
+                        </div>
+                        <div id="text-input">
+                            <label for="confirm-email">Confirm Email:</label>
+                            <input type="email" id="confirm-email" placeholder="Confirm your email" required>
+                        </div>
+                        <div id="text-input">
+                            <label for="phone-number">Phone Number:</label>
+                            <input type="tel" id="phone-number" placeholder="Phone number (Ex. (123)-456-7899)" pattern="\(\d{3}\)-\d{3}-\d{4}" required>
+                        </div>
+                        <div id="time-input">
+                            <label for="time-zone">Time Zone:</label>
+                            <select id="time-zone" required>
+                                <option value="" disabled selected>Select your time zone</option>
+                                <option value="EST">EST</option>
+                                <option value="CST">CST</option>
+                                <option value="MST">MST</option>
+                                <option value="PST">PST</option>
+                            </select>
+                        </div>
+                        <div id="text-input">
+                            <label for="pet-name">Pet Name:</label>
+                            <input type="text" id="pet-name" placeholder="Pet name (Ex. Spot)" pattern="[A-Za-z]+" title="No numbers or symbols allowed" required>
+                        </div>
+                        <div id="text-input">
+                            <label for="pet-type">Pet Type:</label>
+                            <input type="text" id="pet-type" placeholder="Pet type (Ex. Golden Retriever)" pattern="[A-Za-z]+" title="No numbers or symbols allowed" required>
+                        </div>
+                        <div id="text-input">
+                            <label for="pet-age">Pet Age:</label>
+                            <input type="number" id="pet-age" placeholder="Pet age (Ex. 5 years)" pattern="[A-Za-z]+" title="No numbers or symbols allowed" required>
+                        </div>
+                        <div id="submit-button">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                    <script>
+                        const emailInput = document.getElementById('email');
+                        const confirmEmailInput = document.getElementById('confirm-email');
+                        const emailMatch = document.getElementById('email-match');
+            
+                        confirmEmailInput.addEventListener('focusout', validateEmail);
+            
+                        function validateEmail() {
+                            if (confirmEmailInput.value !== '')
+                            {
+                                if (emailInput.value === confirmEmailInput.value) {
+                                    emailInput.style.border = '1px solid green';
+                                    confirmEmailInput.style.border = '1px solid green';
+                                    emailMatch.innerHTML = 'Emails match &#128504;';
+                                    emailMatch.style.color = 'green';
+                                } else {
+                                    emailInput.style.border = '1px solid red';
+                                    confirmEmailInput.style.border = '1px solid red';
+                                    emailMatch.innerHTML = 'Emails do not match &#128500;';
+                                    emailMatch.style.color = 'red';
+                                }
+                            }
+                        }
+
+                        const phoneNumberInput = document.getElementById('phone-number');
+
+                        phoneNumberInput.addEventListener('input', formatPhoneNumber);
+
+                        function formatPhoneNumber(event) {
+                            const input = event.target;
+                            const value = input.value.replace(/\D/g, ''); // Remove all non-digit characters
+                            let formattedValue = '';
+
+                            if (value.length > 0) {
+                                formattedValue += '(' + value.substring(0, 3);
+                            }
+                            if (value.length >= 4) {
+                                formattedValue += ')-' + value.substring(3, 6);
+                            }
+                            if (value.length >= 7) {
+                                formattedValue += '-' + value.substring(6, 10);
+                            }
+
+                            input.value = formattedValue;
+                        }
+
+                        function showSuccess() {
+                            alert('Thank you for reaching out to us! One of our "Pexperts" will reach out to you via your provided email to schedule a consultation within 3 business days.');
+                        }
+                    </script>
+                </div>
+            </header>
+        </main>
+        <footer>
+            <div class="social-icons">
+                <a href="#facebook"><img src="media/facebook-icon.png" alt="Facebook"></a>
+                <a href="#instagram"><img src="media/instagram-icon.png" alt="Instagram"></a>
+                <a href="#x"><img src="media/x-icon.png" alt="X"></a>
+            </div>
+            <div class="link-items">
+                <i><a href="privacy.html">Privacy Policy</a></i>
+                <b> | </b>
+                <i><a href="sitemap.html">Sitemap</a></i>
+                <b> | </b>
+                <i><a class="visited-link" href="contact.html">Contact Us</a></i> 
+            </div>
+            <div class="email">
+                <p>Issues? Feedback? Email us:</p>
+                <p>helpdesk@ParPetPro.com</p>
+            </div>
+        </footer>
+    </body>
+</html>
